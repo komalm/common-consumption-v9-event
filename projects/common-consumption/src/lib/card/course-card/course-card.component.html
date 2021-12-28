@@ -1,0 +1,48 @@
+<!-- card component -->
+<div class="sb--card sb--card--course" (click)="onClick($event)" *ngIf="!isLoading" tabindex="0">
+  <div class="sb--card__main-area">
+    <!-- card img -->
+    <div class="sb--card__img">
+      <div class="img-container">
+        <img [src]="cardImg" alt="">
+      </div>
+    </div>
+    <!-- card mobile view details -->
+    <div class="sb--card__info">
+        <div class="sb--card__meta1">
+            <h4 class="sb--card__title sb__ellipsis sb__ellipsis--two text-left flex-basis-1" title="{{course?.name}}">{{course?.name}}</h4>
+            <div *ngIf="isMenu" role="button" aria-label="View more actions menu" class="menu" (click)="onMenuClick($event);$event.stopPropagation()" tabindex="0"></div>
+        </div>
+      <div class="sb--card__meta1 text-left">
+        <span class="data_1 sb__ellipsis sb__ellipsis--two" title="{{course?.orgDetails?.orgName}}">{{course?.orgDetails?.orgName || course?.organisation?.join(', ')}}</span>
+      </div>
+    </div>
+  </div>
+  
+  <div>
+    <div class="sb--card__meta_c_data" *ngIf="section!=null" [innerHTML]="section">
+    </div>
+  </div>
+
+</div>
+
+  <div class="sb--card" *ngIf="isLoading">
+      <div class="sb--card__main-area">
+          <!-- card img -->
+          <div class="sb--card__img">
+            <div class="img-container loading-animation">
+              
+            </div>
+          </div>
+          <!-- card mobile view details -->
+          <div class="sb--card__info">
+            <h4 class="sb--card__title loading-animation sb--card--highlighter"></h4>
+            <div class="sb--card__meta1 text-left">
+              <span class="data_1 ellipsis loading-animation sb--card--highlighter"></span>
+            </div>
+          </div>
+        </div>
+        <div class="sb--card__meta_c_data" style="display:none;">
+            <div class="label loading-animation sb--card--highlighter" style="width:80%;"></div>
+        </div>
+  </div>

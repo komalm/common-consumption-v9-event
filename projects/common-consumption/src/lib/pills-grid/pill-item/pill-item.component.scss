@@ -1,0 +1,268 @@
+::ng-deep :root {
+  --cc-pills-grid-item:var(--white);
+  --cc-pills-grid-item-hover:#f2f2f2;
+  --cc-pills-grid-item-img-bg:#f2f2f2;
+  --cc-pills-grid-icon-head-img-bg:var(--white);
+}
+::ng-deep {
+  .sb-label-grid {
+    display: grid;
+    gap: 0.5em;
+    margin: 1rem 0;
+    &.size {
+      font-size: 16px;
+      &--sm {
+        font-size: 16px;
+      }
+      &--md {
+        font-size: calc(16px * 1.5);
+        .item {
+          label {
+            font-size: 1rem !important;
+          }
+        }
+      }
+      &--lg {
+        font-size: calc(16px * 1.75);
+        .item {
+          label {
+            font-size: 1rem !important;
+          }
+        }
+      }
+      &--xl {
+        font-size: calc(16px * 2.5);
+      }
+    }
+    .sb-icon-img {
+      display: none;
+      margin-right: 0.5em;
+    }
+    .item {
+      display: flex;
+      background: var(--cc-pills-grid-item);
+      border-radius: 0.25em;
+      transition: all 0.3s ease-in-out;
+      margin: 0.25em;
+      &:hover {
+        box-shadow: none;
+        transform: translate(0, 0px) scale(0.95);
+        z-index: 99;
+        background:var(--cc-pills-grid-item-hover);
+        cursor: pointer;
+      }
+      label {
+        line-height: 1.25rem;
+      }
+    }
+    &.show-icon {
+      .sb-icon-img {
+        display: block;
+        html[dir="“rtl”"] & {
+          margin-left: 0.5em;
+          margin-right: 0;
+        }
+      }
+    }
+    &.hide-icon-bg {
+      .item {
+        .img {
+          background-color: transparent !important;
+          padding: 0.25em 0;
+          margin-right: 0 !important;
+          .sb-icon-img {
+            margin-right: 0;
+          }
+        }
+      }
+      &--invert {
+        .item .img .sb-icon-img {
+          filter: invert(1);
+        }
+      }
+    }
+    &.show-bshadow {
+      .item {
+        box-shadow: 0 20px 20px -10px rgba(0,0,0,0.1);
+      }
+    }
+    &.show-bradius {
+      .item {
+        border-radius: 1em;
+        span.img {
+          border-radius: 0.5em;
+        }
+      }
+    }
+    &.show-round-bradius {
+      .item {
+        border-radius: 10rem;
+        span.img {
+          border-radius: 0.5em;
+        }
+      }
+    }
+    &.sb-box-grid {
+      grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
+      grid-auto-rows: minmax(7.5em, auto);
+      &.show-icon {
+        align-items: center;
+      }
+      .item {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        font-weight: normal;
+        padding: 0.5em;
+        height: 7.5em;
+        text-align: center;
+        .sb-icon-img {
+          margin-bottom: 0.5em;
+        }
+        label {
+          margin-bottom: 0px;
+          margin-top: 0.5em;
+        }
+      }
+      &.show-circle {
+        .item {
+          border-radius: 100%;
+          justify-content: center;
+          width: 7.5em;
+          height: 7.5em;
+          padding: 0.5em;
+          .sb-icon-img {
+            margin-right: 0px;
+            margin-bottom: 0.5em;
+          }
+        }
+      }
+      &.hscroll {
+        grid-auto-flow: column;
+        grid-auto-columns: minmax(7.5em, 1fr);
+      }
+    }
+    &.sb-pills-grid {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      .item {
+        height: 3em;
+        border: 0px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 0.5em;
+        flex: none;
+        box-sizing: border-box;
+        .img {
+          width: 2em;
+          height: 2em;
+          background: var(--cc-pills-grid-item-img-bg);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-right: 0.5em;
+          padding: 0.325em;
+          img {
+            margin: 0 0 0 0;
+            width: 100%;
+            height: 100%;
+          }
+        }
+        label {
+          margin-bottom: 0px;
+          flex: 1;
+          font-size: 0.875em;
+        }
+      }
+      &.hscroll {
+        flex-wrap: nowrap;
+      }
+    }
+    &.spacefree-icon {
+      .item {
+        .img {
+          padding: 0 !important;
+        }
+      }
+    }
+    &.hscroll {
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding-left: 1em;
+    }
+    &.icon-header {
+      display: flex;
+      .item {
+        justify-content: space-around;
+        height: 4.875em;
+        width: 4.875em;
+        overflow: initial;
+        border: 0px;
+        flex: none;
+        margin-top: 1.5em;
+        label {
+          font-size: 0.75em;
+        }
+        .img {
+          padding: 1em;
+          background: var(--cc-pills-grid-icon-head-img-bg);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 2.5em;
+          height: 2.5em;
+          padding: 0.5em;
+          margin-top: -2em;
+          box-shadow: -0.125em 0.5em 0.3125em -0.125em rgba(0, 0, 0, 0.1);
+          img {
+            margin: 0 0 0 0;
+          }
+        }
+      }
+    }
+    &.two-rows-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(16.375rem, 1fr));
+      gap: 0.5em 0.5em;
+      padding-left: 1rem;
+      .item {
+        margin: 0;
+      }
+      &.row-sequence {
+        grid-auto-flow: row !important;
+      }
+      &.column-sequence {
+        grid-auto-flow: column !important;
+        grid-template-rows: repeat(2, auto); //4.5em
+      }
+      &.one-row-grid {
+        grid-template-columns: none;
+      }
+    }
+    &.show-ellipsis {
+      .item {
+        label {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          cursor: pointer;
+        }
+      }
+      &--two {
+        .item {
+          label {
+            -webkit-box-orient: vertical;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-break: break-word;
+            white-space: inherit;
+          }
+        }
+      }
+    }
+  }
+}

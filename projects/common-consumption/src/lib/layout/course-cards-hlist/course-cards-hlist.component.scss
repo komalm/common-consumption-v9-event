@@ -1,0 +1,61 @@
+@import "../../../../../../node_modules/@project-sunbird/sb-styles/assets/mixins/mixins";
+@import "../../../../../../node_modules/@project-sunbird/sb-styles/assets/mixins/custom-mixins";
+@import "../../../../../../node_modules/@project-sunbird/sb-styles/assets/loadingshadows";
+:host {
+  .layout-library {
+    display: flex;
+    // flex-wrap: wrap;
+    flex-direction: column;
+  }
+  .sb--scrolling-wrapper-flexbox {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.5em;
+  }
+  .sb--card--container {
+    flex: 0 0 auto;
+    width: calculateRem(280px);
+    margin: 0 0 0 0;
+    margin-right:0.5rem;
+    html[dir="rtl"] & {
+      margin-right:inherit;
+      margin-left:1rem;
+    }
+  }
+  .header {
+    display: flex;
+    flex-direction: row;
+    @include margin(0.7rem 0 0.5rem 0);
+    padding: 0px 0;
+    align-items: center;
+    .title {
+      font-family: inherit;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      flex: 1;
+      height: calculateRem(24px);
+      color: var(--secondary-color);
+      font-size: calculateRem(18px);
+      font-weight: bold;
+      text-transform: capitalize;
+      line-height: calculateRem(26px);
+      display: flex;
+      align-items: center;
+      hr{
+        flex: 1;
+        margin-left: 1rem;
+        display: none;
+      }
+    }
+  }
+
+  .sb-btn-oval{
+    border-radius: 50%;
+    padding: 0;
+    height: 80%;
+    top: 10%;
+	}
+
+}

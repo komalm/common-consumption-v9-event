@@ -1,0 +1,41 @@
+<div class="card-list-container">
+
+    <div class="header" *ngIf="!isLoading && title">
+        <div class="title">
+            <i class="icon-svg icon-svg--sm">
+                <svg class="icon">
+                    <use xlink:href="assets/common-consumption/images/sprite.svg#book"></use>
+                </svg>
+            </i>
+            {{title}}
+        </div>
+    </div>
+
+    <!--Loading Indicator for header-->
+    <div class="header" *ngIf="isLoading">
+            <div class="loading-animation sb--card--highlighter" style="width:100px;height:20px;">
+                    <i class="icon-svg icon-svg--sm"></i>
+            </div>
+    </div>
+
+    <div class="body">
+        <ng-container *ngIf="cardType==='textbook' || layoutConfig">
+            <sb-library-card
+                *ngFor="let content of contentList | slice:0:(maxCardCount ? maxCardCount : contentList?.length); let i= index" [isOffline]="!content?.isAvailableLocally && isOffline"
+                [content]="content" [type]="LibraryCardTypes.MOBILE_TEXTBOOK" [isLoading]="isLoading" (cardClick)="emitCardClick($event, i)" [cardImg]="content?.cardImg"
+                (menuClick)="emitMenuClick($event)" [isMenu]="isMenu" [layoutConfig]="layoutConfig">
+            </sb-library-card>
+            <button *ngIf="maxCardCount && contentList?.length >maxCardCount" class="sbbtn flat stack-btn full-width"
+                (click)="showAllList($event)" tabindex="0">{{viewMoreButtonText}}</button>
+        </ng-container>
+        <ng-container *ngIf="cardType==='course' && !layoutConfig">
+            <sb-course-card *ngFor="let content of contentList | slice:0:(maxCardCount ? maxCardCount : contentList?.length); let i= index"
+                [section]="null" [course]="content" [cardImg]="content?.cardImg" (cardClick)="emitCardClick($event, i)" [isMenu]="isMenu"
+                (menuClick)="emitMenuClick($event)">
+            </sb-course-card>
+            <button *ngIf="maxCardCount && contentList?.length >maxCardCount" class="sbbtn flat stack-btn full-width"
+                (click)="showAllList($event)" tabindex="0">{{viewMoreButtonText}}</button>
+        </ng-container>
+    </div>
+
+</div>

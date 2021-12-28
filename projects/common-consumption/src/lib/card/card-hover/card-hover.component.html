@@ -1,0 +1,74 @@
+
+<!-- <div class="card-hover"> -->
+    <div class="action-container">
+        <ng-container *ngFor="let item of hoverData?.actions">
+            <div class="action-item" *ngIf="item.type === 'save'" [title]="item?.title ? item.title : ''">
+                <button class="sb-btn-grow" (click)="actionClick(item, content, $event);" [disabled]="item.disabled" tabindex="0">
+                    <i class="icon-svg icon-svg--md">
+                        <svg class="icon">
+                            <use xlink:href="assets/common-consumption/images/sprite.svg#pendrive"></use>
+                        </svg>
+                    </i>
+                  <span class="sb__ellipsis">{{item.label}}</span>
+                </button>
+            </div>
+            <div class="action-item" *ngIf="item.type === 'download'" [title]="item?.title ? item.title : ''">
+                <button class="sb-btn-grow" (click)="actionClick(item, content, $event);" [disabled]="item.disabled" tabindex="0">
+                    <i class="icon-svg icon-svg--md">
+                        <svg class="icon">
+                            <use xlink:href="assets/common-consumption/images/sprite.svg#outline-cloud_download"></use>
+                        </svg>
+                    </i>
+                    <span class="sb__ellipsis">{{item.label}}</span>
+                  </button>
+            </div>
+            <div class="action-item" *ngIf="item.type === 'open'" [title]="item?.title ? item.title : ''">
+                <button class="sb-btn-grow" (click)="actionClick(item, content, $event);" [disabled]="item.disabled" tabindex="0">
+                    <i class="icon-svg icon-svg--md">
+                        <svg class="icon">
+                            <use xlink:href="assets/common-consumption/images/sprite.svg#book-open"></use>
+                        </svg>
+                    </i>
+                    <span class="sb__ellipsis">{{item.label}}</span>
+                  </button>
+            </div>
+            <div class="action-item" *ngIf="item.type === 'view'" [title]="item?.title ? item.title : ''">
+                <button class="sb-btn-grow" (click)="actionClick(item, content, $event);" tabindex="0" [disabled]="item.disabled">
+                    <i class="icon-svg icon-svg--sm">
+                        <svg class="icon">
+                            <use xlink:href="assets/common-consumption/images/sprite.svg#eye"></use>
+                        </svg>
+                    </i>
+                    <span class="sb__ellipsis">{{item.label}}</span>
+                  </button>
+            </div>
+            <div class="action-item" *ngIf="item.type === 'addToGroup'" [title]="item?.title ? item.title : ''">
+                <button class="sb-btn-grow" (click)="actionClick(item, content, $event);" tabindex="0" [disabled]="item.disabled">
+                    <i class="icon-svg icon-svg--sm">
+                        <svg class="icon">
+                            <use xlink:href="assets/common-consumption/images/sprite.svg#add-icon"></use>
+                        </svg>
+                    </i>
+                    <span class="sb__ellipsis">{{item.label}}</span>
+                  </button>
+            </div>
+            <div  class="d-flex flex-ai-center flex-jc-center fnormal sb-color-white" *ngIf="item.type === 'text'" [title]="item?.title ? item.title : ''">
+                {{item?.label}}
+                </div>
+        </ng-container>
+        
+        <!-- <div class="action-item">
+            <button class="sb-btn sb-btn-link sb-btn-link- sb-btn-normal sb-btn-square sb-color-white w-auto sb-btn-grow" (click)="test('button3'); $event.stopPropagation()">
+                <i class="icon-svg icon-svg--sm">
+                    <svg class="icon">
+                        <use xlink:href="assets/common-consumption/images/sprite.svg#book"></use>
+                    </svg>
+                </i>
+                <span>{{text}}</span>
+              </button>
+        </div> -->
+    </div>
+    <div class="hover-meta-info" *ngIf="hoverData?.note">
+        {{hoverData?.note}}
+    </div>
+<!-- </div> -->

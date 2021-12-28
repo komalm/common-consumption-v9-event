@@ -1,0 +1,331 @@
+@import "../../../../../../node_modules/@project-sunbird/sb-styles/assets/variables";
+@import "../../../../../../node_modules/@project-sunbird/sb-styles/assets/mixins/mixins";
+@import "../../../../../../node_modules/@project-sunbird/sb-styles/assets/mixins/custom-mixins";
+@import "../../../../../../node_modules/@project-sunbird/sb-styles/assets/buttons";
+
+// modal component variables
+$sb-modal-header-bg: var(--primary-400);
+$sb-modal-header-color: var(--white);
+$sb-modal-header-padding:  calculateRem(4px) calculateRem(16px);
+$sb-modal-header-height: calculateRem(40px);
+$sb-modal-fs-header-height:  calculateRem(56px);
+$sb-modal-header-line-height: calculateRem(24px);
+$sb-modal-content-padding: calculateRem(16px);
+$sb-modal-actions-bg: var(--white);
+$sb-modal-actions-padding: calculateRem(8px) calculateRem(16px);
+$sb-modal-actions-height: calculateRem(56px);
+$sb-modal-header-bg-success: var(--secondary-200);
+$sb-modal-header-bg-warning: var(--tertiary-100);
+$sb-modal-header-bg-error: var(--red-400);
+$sb-modal-header-fsize: calculateRem(16px);
+$sb-modal-small-width: calculateRem(480px);
+$sb-modal-normal-width: calculateRem(720px);
+$sb-modal-large-width: calculateRem(900px);
+$sb-modal-corner-radius: calculateRem(8px);
+// icons
+.sb-icon {
+  position: relative;
+  top: calculateRem(1px);
+  display: inline-block;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  opacity: 0.8;
+  //sizes
+  &--xs {
+    width: var(--icon-svg-xs);
+    height: var(--icon-svg-xs);
+  }
+  &--sm {
+    width: var(--icon-svg-sm);
+    height: var(--icon-svg-sm);
+  }
+  &--md {
+    width: var(--icon-svg-md);
+    height: var(--icon-svg-md);
+  }
+  &--lg {
+    width: var(--icon-svg-lg);
+    height: var(--icon-svg-lg);
+  }
+  &--xl {
+    width: var(--icon-svg-xl);
+    height: var(--icon-svg-xl);
+  }
+  //colors
+  &--white {
+    fill: var(--white);
+  }
+  &--primary {
+    fill: var(--primary-color);
+  }
+  &--secondary {
+    fill: var(--secondary-color);
+  }
+  &--tertiary {
+    fill: var(--tertiary-color);
+  }
+  &--red {
+    fill: var(--red-400);
+  }
+  &--gray {
+    fill: var(--gray-800);
+  }
+}
+/* sb modal wrapper  */
+.sb-modalWrapper {
+  background: rgba(var(--rc-rgba-black), 0.35);
+  position: fixed;
+  transform-origin: center center;
+  opacity: 1;
+  overflow-y: auto;
+  z-index: 999999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 1;
+  animation-fill-mode: both;
+  animation-duration: 0.5s;
+  transition: background-color 0.5s linear;
+  user-select: none;
+  will-change: opacity;
+  &--noOverlay {
+    background: none;
+  }
+  //sb-btn-close sb-icon sb-icon--xs sb-icon--white
+  // sizes
+  &.sb-modal-sm {
+    .sb-modal {
+      max-width: $sb-modal-small-width;
+    }
+  }
+  &.sb-modal-md {
+    .sb-modal {
+      max-width: $sb-modal-normal-width;
+      .sb-modal__content {
+        max-height: calc(100vh - 124px);
+        &.o-y-visible {
+          max-height: inherit;
+        }
+      }
+    }
+  }
+  &.sb-modal-lg {
+    .sb-modal {
+      max-width: $sb-modal-large-width;
+      .sb-btn-close .sb-icon{
+        @extend .sb-btn-lg;
+    }
+      .sb-modal-content {
+        max-height: calc(100vh - 124px);
+      }
+    }
+  }
+  &.sb-modal-full {
+    .sb-modal {
+      @include position(fixed, 0 0 0 0); //bourbon
+      width: 100%;
+      height:100vh;
+      transform: translate(0,0%);
+      @include margin(0 auto);
+      overflow-y: auto;
+      overflow-x: hidden;
+      border-radius: 0 0 0px 0px;
+      .sb-btn-close .sb-icon{
+        height:calculateRem(32px);width:calculateRem(32px);
+    }
+      .sb-modal__header {
+        height: $sb-modal-fs-header-height;
+        width: auto;
+        border-radius: 0 0 0px 0px;
+      }
+      .sb-modal__content {
+        height: calc(100vh - 112px);
+      }
+      .sb-modal__actions {
+        border-radius: 0 0 0px 0px;
+      }
+      .close {
+        position: relative;
+      }
+    }
+  }
+  // is closable
+  &.sb-modal-isNotClosable {
+    .sb-modal {
+      .sb-btn-close {
+        display: block;
+      }
+    }
+  }
+  //sb-modal type warning,success,error,default
+  &.sb-modal-primary {
+    .sb-modal {
+      .sb-modal__header {
+        background-color: $sb-modal-header-bg;
+      }
+      .sb-modal__actions {
+        button:nth-child(1) {
+          @extend .sb-btn-primary;
+        }
+        button:nth-child(2) {
+          @extend .sb-btn-outline-primary;
+        }
+        button:nth-child(3) {
+          @extend .sb-btn-outline-primary;
+          @include respond-above(sm) {
+            margin-right: auto !important;
+          }
+        }
+      }
+    }
+  }
+  &.sb-modal-warning,
+  &.sb-modal-tertiary {
+    .sb-modal {
+      .sb-modal__header {
+        background-color: $sb-modal-header-bg-warning;
+      }
+      .sb-modal__actions {
+        button:nth-child(1) {
+          @extend .sb-btn-warning;
+        }
+        button:nth-child(2) {
+          @extend .sb-btn-outline-warning;
+        }
+        button:nth-child(3) {
+          @extend .sb-btn-outline-warning;
+          @include respond-above(sm) {
+            margin-right: auto !important;
+          }
+        }
+      }
+    }
+  }
+  &.sb-modal-success,
+  &.sb-modal-secondary {
+    .sb-modal {
+      .sb-modal__header {
+        background-color: $sb-modal-header-bg-success;
+      }
+      .sb-modal__actions {
+        button:nth-child(1) {
+          @extend .sb-btn-success;
+        }
+        button:nth-child(2) {
+          @extend .sb-btn-outline-success;
+        }
+        button:nth-child(3) {
+          @extend .sb-btn-outline-success;
+          @include respond-above(sm) {
+            margin-right: auto !important;
+          }
+        }
+      }
+    }
+  }
+  &.sb-modal-error {
+    .sb-modal {
+      .sb-modal__header {
+        background-color: $sb-modal-header-bg-error;
+      }
+      .sb-modal__actions {
+        button:nth-child(1) {
+          @extend .sb-btn-error;
+        }
+        button:nth-child(2) {
+          @extend .sb-btn-outline-error;
+        }
+        button:nth-child(3) {
+          @extend .sb-btn-outline-error;
+          @include respond-above(sm) {
+            margin-right: auto !important;
+          }
+        }
+      }
+    }
+  }
+}
+/* sb modal wrapper ends */
+/* sb modal component */
+.sb-modal {
+  // modal box
+  margin: 0px auto;
+  position: fixed;
+  z-index: 9999999;
+  text-align: center;
+  background: none;
+  border: none;
+  box-shadow: calculateRem(1px) calculateRem(3px) calculateRem(3px) 0 rgba(var(--rc-rgba-black), 0.2),
+  calculateRem(1px) calculateRem(3px) calculateRem(15px) calculateRem(2px) rgba(var(--rc-rgba-black), 0.2);
+  user-select: text;
+  border-radius: calculateRem(4px) calculateRem(4px) 0px 0px;
+  bottom: 0%;
+  left: 0%;
+  right: 0%;
+  width: 100%;
+  animation-fill-mode: inherit;
+  @include respond-above(sm) {
+    width: calc(100% - 16px);
+    height: min-content;
+    border-radius: calculateRem(4px);
+    top: 50%;
+    transform: translate(0%, -50%);
+    text-align: left;
+  }
+  &__header {
+    background-color: $sb-modal-header-bg;
+    color: $sb-modal-header-color;
+    padding: $sb-modal-header-padding;
+    border-bottom: 0 solid var(--gray-100); //@include size(auto,($base-block-space * 5)); //bourbon
+    min-height: $sb-modal-header-height;
+    //line-height: $sb-modal-header-line-height;
+    border-top-left-radius: calculateRem(4px);
+    border-top-right-radius: calculateRem(4px);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    h4 {
+      margin: 0px 0px 0px 0px;
+      padding: 0px 0px 0px 0px;
+      font-weight: 700;
+      font-size: $sb-modal-header-fsize;
+      flex: 1;
+      @include respond-above(sm) {
+        flex: inherit;
+      }
+    }
+    .sb-icon {
+      width:calculateRem(24px);
+      height:calculateRem(24px);
+    }
+  }
+  &__content {
+    min-height: calculateRem(96px);
+    padding: $sb-modal-content-padding;
+    overflow-y: auto;
+    background: var(--white);
+  }
+  &__actions {
+    padding: $sb-modal-actions-padding;
+    background: $sb-modal-actions-bg;
+    border-top: calculateRem(1px) solid var(--gray-100);
+    min-height: $sb-modal-actions-height;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    @include respond-above(sm) {
+      justify-content: inherit;
+      border-radius: 0px 0px calculateRem(4px) calculateRem(4px);
+    }
+    .sb-btn + .sb-btn {
+      @include margin(0 calculateRem(8px) 0 0);
+    }
+  }
+}

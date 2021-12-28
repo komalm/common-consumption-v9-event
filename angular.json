@@ -1,0 +1,51 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "commonConsumption": {
+      "root": "projects/common-consumption",
+      "sourceRoot": "projects/common-consumption/src",
+      "projectType": "library",
+      "prefix": "sb",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/common-consumption/tsconfig.lib.json",
+            "project": "projects/common-consumption/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/common-consumption/src/test.ts",
+            "tsConfig": "projects/common-consumption/tsconfig.spec.json",
+            "karmaConfig": "projects/common-consumption/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/common-consumption/tsconfig.lib.json",
+              "projects/common-consumption/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    }
+  },
+  "defaultProject": "commonConsumption",
+  "cli": {
+    "analytics": "b465aa9c-cabb-4400-bb80-0df6d961b88e"
+  }
+}

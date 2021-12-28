@@ -1,0 +1,19 @@
+@import "../../../../../../node_modules/@project-sunbird/sb-styles/assets/mixins/mixins";
+.sb-btn-grow {
+  background: none;
+  border:0px solid transparent;
+  font-size:calculateRem(12px);
+  color: var(--white);
+  cursor: pointer;
+  outline:0px !important;
+  &:disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+  transition: all .2s ease-in-out;
+  &:hover:not([disabled]) {
+    background: none;
+    transform: scale(1.15);
+  }
+}
+

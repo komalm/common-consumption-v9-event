@@ -1,0 +1,43 @@
+@import "../../../../../../node_modules/@project-sunbird/sb-styles/assets/mixins/mixins";
+:host {
+.sb--card--course {
+    & .sb--container-box {
+            min-width: 0;
+            flex: 1;
+            padding-right: calculateRem(8px);
+            html[dir="rtl"] & {
+                padding-right:inherit;
+                padding-left: calculateRem(8px);
+            }
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            .sb--card__info {
+                padding: 0rem 0rem 0rem 0rem;
+                display: flex; 
+                align-items: center;
+            }
+            .sb--holder {
+                flex:1;
+                min-width: 0;
+            }
+        }
+}
+}
+
+.sb--card--course {
+    &.sb--card--recently-viewed {
+        .sb--container-box {
+            padding: 0.5rem !important;
+        }
+        .sb--card__meta_c_data {
+            min-height: 1rem !important;
+        }
+    }
+}
+.sb--card__meta_c_data_external {
+    min-height: calculateRem(16px);
+    padding: 0.1rem;
+    font-size: .8rem;
+} 
