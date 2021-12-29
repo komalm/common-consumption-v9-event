@@ -1,6 +1,6 @@
 {
-    "name": "common-consumption-v9-event",
-    "version": "4.5.5",
+    "name": "common-consumption-v9-event-cards",
+    "version": "1.0.1",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/komalm/common-consumption-v9-event.git"

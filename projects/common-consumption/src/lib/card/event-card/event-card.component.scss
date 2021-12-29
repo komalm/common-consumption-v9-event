@@ -92,6 +92,15 @@
       line-height: calculateRem(20px);
     }
 
+    &__details {
+
+      // color: var(--cc-sbcard-title);
+      font-size: calculateRem(14px);
+      margin: 0px;
+      line-height: normal;
+      line-height: calculateRem(20px);
+    }
+
     &__meta1 {
 
       color: var(--cc-sbcard-meta-text);

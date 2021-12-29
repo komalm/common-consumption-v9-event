@@ -1,6 +1,6 @@
 {
-  "name": "sunbird-ed-consumption-ngcomponents-event",
-  "version": "0.0.0",
+  "name": "common-consumption-v9-event-cards",
+  "version": "1.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -63,5 +63,17 @@
     "tslib": "^1.9.0",
     "tslint": "~5.11.0",
     "typescript": "~3.7.3"
-  }
+  },
+  "description": "Contains common UI components powered by angular. These components are designed to be used in sunbird consumption platforms *(mobile app, web portal, offline desktop app)* to drive reusability, maintainability hence reducing the redundant development effort significantly.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/komalm/common-consumption-v9-event.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/komalm/common-consumption-v9-event/issues"
+  },
+  "homepage": "https://github.com/komalm/common-consumption-v9-event#readme"
 }
