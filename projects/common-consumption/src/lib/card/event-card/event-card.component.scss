@@ -177,7 +177,7 @@
     &__tags {
       display: flex;
       flex-direction: row;
-      align-items: center;
+      align-items: flex-start;
       justify-content: flex-end;
       flex: 1;
     }
@@ -194,7 +194,7 @@
     &__type {
 
       background: var(--cc-sbcard-type-bg);
-      position: relative;
+      position: absolute;
       height: calculateRem(20px);
       @include padding(null, calculateRem(8px), null, calculateRem(4px));
       @include margin(null, null, null, calculateRem(16px));
